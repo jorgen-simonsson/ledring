@@ -27,7 +27,15 @@ class Light:
         self.lights.append(Led(SEC_CARD,2))
         self.lights.append(Led(SEC_CARD,3))
         self.lights.append(Led(SEC_CARD,4))
-        self.light_index = 0
+        self.light_index = 8
+
+    def step(self):
+        self.all_off()
+        self.light_index = self.light_index +1
+        if self.light_index > 8:
+            self.light_index =0
+        if self.light_index < 8:
+            lib8mosind.set(self.lights[self.light_index].card,self.lights[self.light_index].led_number,ON)    
 
     def all_off(self):
         lib8mosind.set_all(FIRST_CARD, 0)
@@ -49,5 +57,7 @@ class Light:
 
 light = Light()
 light.show_off()
-
+while True:
+    light.step()
+    time.sleep(1)
 

@@ -54,7 +54,6 @@ class Light:
                 index = index+ 1
             show_cnt = show_cnt -1
 
-
 light = Light()
 light.show_off()
 while True:

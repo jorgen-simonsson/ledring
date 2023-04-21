@@ -1,0 +1,13 @@
+[Unit]
+Description=ledring-control
+StartLimitIntervalSec=10
+[Service]
+Type=simple
+ExecStart=/home/nils/apps/ledring/ledring-runner.sh
+Restart=on-failure
+User=root
+Group=root
+RestartSec=30s
+StartLimitBurst=3
+[Install]
+WantedBy=multi-user.target
